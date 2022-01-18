@@ -1,5 +1,6 @@
-package io.github.davidebasile.SimpleSocketExample;
+package io.github.davidebasile.OrchestrationExample;
 
+import io.github.davidebasile.OrchestrationExample.AppTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
