@@ -1,4 +1,4 @@
-package io.github.davidebasile.OrchestrationExample;
+package io.github.contractautomata.OrchestrationExample;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,11 +12,11 @@ import contractAutomata.automaton.state.BasicState;
 import contractAutomata.automaton.transition.Transition;
 import contractAutomata.converters.DataConverter;
 import contractAutomata.requirements.Agreement;
+import io.github.contractautomata.OrchestrationExample.principals.Alice;
+import io.github.contractautomata.OrchestrationExample.principals.Bob;
 import io.github.contractautomata.RunnableOrchestration.RunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.Uniform.UniformChoiceRunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.Uniform.UniformChoiceRunnableOrchestration;
-import io.github.davidebasile.OrchestrationExample.principals.Alice;
-import io.github.davidebasile.OrchestrationExample.principals.Bob;
 
 public class App {
 	private final static String dir = System.getProperty("user.dir")+File.separator

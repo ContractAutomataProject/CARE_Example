@@ -1,4 +1,4 @@
-package io.github.davidebasile.OrchestrationExample.principals;
+package io.github.contractautomata.OrchestrationExample.principals;
 
 /**
  * 
