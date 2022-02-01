@@ -1,2 +1,2 @@
-# OrchestrationEngineExample
-An example using the Orchestration Engine of Contract Automata
+# Contract Automata Runtime Engine Usage Example
+An example using the Runtime Engine of Contract Automata
