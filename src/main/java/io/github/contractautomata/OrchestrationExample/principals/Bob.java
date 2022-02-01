@@ -14,7 +14,7 @@ Transitions:
  * @author Davide Basile
  *
  */
-public class Bob {
+public class Bob implements BobInterface {
 	
 	//@offer
 	public String coffee(Integer sugar) {

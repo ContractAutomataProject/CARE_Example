@@ -14,7 +14,7 @@ Transitions:
  * @author Davide Basile
  *
  */
-public class Alice  {
+public class Alice  implements AliceInterface{
 
 	//@request
 	public Integer coffee(String arg) {

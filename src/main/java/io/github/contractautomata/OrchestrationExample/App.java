@@ -23,10 +23,14 @@ public class App {
 			+"resources"+File.separator;
 
 	public static void main(String[] args) throws IOException {
+		
+		// the designer of the application creates the target behaviour or requirement
+		//substitute with = createNewRequirement(); to change the application behaviour
 		Automaton<String, BasicState,Transition<String, BasicState,Label>> req = createOldRequirement();
-
 		System.out.println("Requirement : \n" + req.toString());
-
+		
+		
+		//the services providers publish their contracts and services, in this example everything is local
 		MSCA ca = new DataConverter().importMSCA(dir+"Alice.data");
 		RunnableOrchestratedContract alice = new UniformChoiceRunnableOrchestratedContract(ca,8080,new Alice());
 		new Thread(alice).start();
@@ -34,11 +38,10 @@ public class App {
 		MSCA cb = new DataConverter().importMSCA(dir+"Bob.data");
 		RunnableOrchestratedContract bob = new UniformChoiceRunnableOrchestratedContract(cb,8081,new Bob());
 		new Thread(bob).start();
-
-		// assume the remote hosts and ports running the threads alice and bob are discovered, 
-		// locally the orchestration has only their contracts ca and cb, the actual code of the services 
-		// is running remotely.
 		
+
+		// when the hosts and ports running the threads alice and bob are discovered, 
+		// the orchestration is launched passing only their contracts ca and cb, with the target behaviour.
 		new Thread(new UniformChoiceRunnableOrchestration(req,
 				new Agreement(),
 				Arrays.asList(ca,cb),
@@ -52,7 +55,6 @@ public class App {
 	 * 
 	 * @return the requirement
 	 */
-
 	@SuppressWarnings("unused")
 	private static  Automaton<String, BasicState,Transition<String, BasicState,Label>>  createNewRequirement() {
 		BasicState s0 = new BasicState("0",true,false);
