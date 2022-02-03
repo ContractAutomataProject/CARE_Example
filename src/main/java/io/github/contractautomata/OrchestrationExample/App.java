@@ -15,8 +15,8 @@ import contractAutomata.requirements.Agreement;
 import io.github.contractautomata.OrchestrationExample.principals.Alice;
 import io.github.contractautomata.OrchestrationExample.principals.Bob;
 import io.github.contractautomata.RunnableOrchestration.RunnableOrchestratedContract;
-import io.github.contractautomata.RunnableOrchestration.Uniform.UniformChoiceRunnableOrchestratedContract;
-import io.github.contractautomata.RunnableOrchestration.Uniform.UniformChoiceRunnableOrchestration;
+import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestratedContract;
+import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestration;
 
 public class App {
 	private final static String dir = System.getProperty("user.dir")+File.separator
@@ -32,17 +32,17 @@ public class App {
 		
 		//the services providers publish their contracts and services, in this example everything is local
 		MSCA ca = new DataConverter().importMSCA(dir+"Alice.data");
-		RunnableOrchestratedContract alice = new UniformChoiceRunnableOrchestratedContract(ca,8080,new Alice());
+		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(ca,8080,new Alice());
 		new Thread(alice).start();
 		
 		MSCA cb = new DataConverter().importMSCA(dir+"Bob.data");
-		RunnableOrchestratedContract bob = new UniformChoiceRunnableOrchestratedContract(cb,8081,new Bob());
+		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(cb,8081,new Bob());
 		new Thread(bob).start();
 		
 
 		// when the hosts and ports running the threads alice and bob are discovered, 
 		// the orchestration is launched passing only their contracts ca and cb, with the target behaviour.
-		new Thread(new UniformChoiceRunnableOrchestration(req,
+		new Thread(new MajoritarianChoiceRunnableOrchestration(req,
 				new Agreement(),
 				Arrays.asList(ca,cb),
 				Arrays.asList(null,null),//local host

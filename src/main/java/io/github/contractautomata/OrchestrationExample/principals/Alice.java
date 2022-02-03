@@ -18,7 +18,7 @@ public class Alice  implements AliceInterface{
 
 	//@request
 	public Integer coffee(String arg) {
-		if (arg==null) {
+		if (arg!=null) {
 			System.out.println("Alice has received the payload "+arg);
 			return null;
 		}
