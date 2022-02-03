@@ -15,6 +15,8 @@ import contractAutomata.requirements.Agreement;
 import io.github.contractautomata.OrchestrationExample.principals.Alice;
 import io.github.contractautomata.OrchestrationExample.principals.Bob;
 import io.github.contractautomata.RunnableOrchestration.RunnableOrchestratedContract;
+import io.github.contractautomata.RunnableOrchestration.actions.CentralisedOrchestratedAction;
+import io.github.contractautomata.RunnableOrchestration.actions.CentralisedOrchestratorAction;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestration;
 
@@ -32,11 +34,11 @@ public class App {
 		
 		//the services providers publish their contracts and services, in this example everything is local
 		MSCA ca = new DataConverter().importMSCA(dir+"Alice.data");
-		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(ca,8080,new Alice());
+		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(ca,8080, new Alice(), new CentralisedOrchestratedAction());
 		new Thread(alice).start();
 		
 		MSCA cb = new DataConverter().importMSCA(dir+"Bob.data");
-		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(cb,8081,new Bob());
+		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(cb,8081, new Bob(),  new CentralisedOrchestratedAction());
 		new Thread(bob).start();
 		
 
@@ -46,7 +48,8 @@ public class App {
 				new Agreement(),
 				Arrays.asList(ca,cb),
 				Arrays.asList(null,null),//local host
-				Arrays.asList(alice.getPort(),bob.getPort())))
+				Arrays.asList(alice.getPort(),bob.getPort()),
+				new CentralisedOrchestratorAction()))
 		.start();
 	}
 
