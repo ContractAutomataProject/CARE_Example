@@ -25,5 +25,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/CARE"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CAT_Lib"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

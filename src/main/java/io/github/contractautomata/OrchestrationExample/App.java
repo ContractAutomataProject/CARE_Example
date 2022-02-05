@@ -5,52 +5,59 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 
-import contractAutomata.automaton.Automaton;
-import contractAutomata.automaton.MSCA;
-import contractAutomata.automaton.label.Label;
-import contractAutomata.automaton.state.BasicState;
-import contractAutomata.automaton.transition.Transition;
-import contractAutomata.converters.DataConverter;
-import contractAutomata.requirements.Agreement;
 import io.github.contractautomata.OrchestrationExample.principals.Alice;
 import io.github.contractautomata.OrchestrationExample.principals.Bob;
 import io.github.contractautomata.RunnableOrchestration.RunnableOrchestratedContract;
-import io.github.contractautomata.RunnableOrchestration.actions.CentralisedOrchestratedAction;
-import io.github.contractautomata.RunnableOrchestration.actions.CentralisedOrchestratorAction;
+import io.github.contractautomata.RunnableOrchestration.RunnableOrchestration;
+import io.github.contractautomata.RunnableOrchestration.actions.DistributedOrchestratedAction;
+import io.github.contractautomata.RunnableOrchestration.actions.DistributedOrchestratorAction;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestration;
+import io.github.davidebasile.contractautomata.automaton.Automaton;
+import io.github.davidebasile.contractautomata.automaton.MSCA;
+import io.github.davidebasile.contractautomata.automaton.label.Label;
+import io.github.davidebasile.contractautomata.automaton.state.BasicState;
+import io.github.davidebasile.contractautomata.automaton.transition.Transition;
+import io.github.davidebasile.contractautomata.converters.DataConverter;
+import io.github.davidebasile.contractautomata.requirements.Agreement;
 
 public class App {
 	private final static String dir = System.getProperty("user.dir")+File.separator
 			+"resources"+File.separator;
 
 	public static void main(String[] args) throws IOException {
-		
-		// the designer of the application creates the target behaviour or requirement
+
+		// the designer of the application creates the  requirement
 		//substitute with = createNewRequirement(); to change the application behaviour
-		Automaton<String, BasicState,Transition<String, BasicState,Label>> req = createOldRequirement();
+		Automaton<String, String, BasicState,Transition<String, String, BasicState,Label<String>>> req = createNewRequirement();
 		System.out.println("Requirement : \n" + req.toString());
-		
-		
+
+
 		//the services providers publish their contracts and services, in this example everything is local
 		MSCA ca = new DataConverter().importMSCA(dir+"Alice.data");
-		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(ca,8080, new Alice(), new CentralisedOrchestratedAction());
+		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(ca,8080, new Alice(), new DistributedOrchestratedAction());
 		new Thread(alice).start();
-		
+
 		MSCA cb = new DataConverter().importMSCA(dir+"Bob.data");
-		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(cb,8081, new Bob(),  new CentralisedOrchestratedAction());
+		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(cb,8082, new Bob(),  new DistributedOrchestratedAction());
 		new Thread(bob).start();
-		
+
 
 		// when the hosts and ports running the threads alice and bob are discovered, 
-		// the orchestration is launched passing only their contracts ca and cb, with the target behaviour.
-		new Thread(new MajoritarianChoiceRunnableOrchestration(req,
-				new Agreement(),
-				Arrays.asList(ca,cb),
-				Arrays.asList(null,null),//local host
+		// the runnable orchestration can be built and, if not empty, executed
+		RunnableOrchestration ron = new MajoritarianChoiceRunnableOrchestration(req,new Agreement(),
+				Arrays.asList(alice.getContract(),bob.getContract()),
+				Arrays.asList(null,null), 
 				Arrays.asList(alice.getPort(),bob.getPort()),
-				new CentralisedOrchestratorAction()))
-		.start();
+				new DistributedOrchestratorAction());
+		
+		if (ron.isEmptyOrchestration())
+			System.out.println("No orchestration found");
+		else
+			new Thread(ron).start();
+
+		
+
 	}
 
 	/**
@@ -59,12 +66,12 @@ public class App {
 	 * @return the requirement
 	 */
 	@SuppressWarnings("unused")
-	private static  Automaton<String, BasicState,Transition<String, BasicState,Label>>  createNewRequirement() {
+	private static  Automaton<String, String, BasicState,Transition<String, String, BasicState,Label<String>>>  createNewRequirement() {
 		BasicState s0 = new BasicState("0",true,false);
 		BasicState s1 = new BasicState("1",false,false);
 		BasicState s2 = new BasicState("2",false,true);
-		Transition<String, BasicState,Label> t1 = new Transition<>(s0, new Label("euro"), s1);
-		Transition<String, BasicState,Label> t2 = new Transition<>(s1, new Label("coffee"), s2);
+		Transition<String, String, BasicState,Label<String>> t1 = new Transition<>(s0, new Label<String>("euro"), s1);
+		Transition<String, String, BasicState,Label<String>> t2 = new Transition<>(s1, new Label<String>("coffee"), s2);
 		return new Automaton<>(Set.of(t1,t2));
 	}
 
@@ -73,15 +80,16 @@ public class App {
 	 * 
 	 * @return the requirement
 	 */
-	private static  Automaton<String, BasicState,Transition<String, BasicState,Label>>  createOldRequirement() {
+	@SuppressWarnings("unused")
+	private static  Automaton<String, String, BasicState,Transition<String, String, BasicState,Label<String>>>  createOldRequirement() {
 		BasicState s0 = new BasicState("0",true,false);
 		BasicState s1 = new BasicState("1",false,false);
 		BasicState s2 = new BasicState("3",false,false);
 		BasicState s3 = new BasicState("2",false,true);
-		Transition<String, BasicState,Label> t1 = new Transition<>(s0, new Label("euro"), s1);
-		Transition<String, BasicState,Label> t2 = new Transition<>(s1, new Label("coffee"), s3);
-		Transition<String, BasicState,Label> t3 = new Transition<>(s0, new Label("dollar"), s2);
-		Transition<String, BasicState,Label> t4 = new Transition<>(s2, new Label("tea"), s3);
+		Transition<String, String, BasicState,Label<String>> t1 = new Transition<>(s0, new Label<String>("euro"), s1);
+		Transition<String, String, BasicState,Label<String>> t2 = new Transition<>(s1, new Label<String>("coffee"), s3);
+		Transition<String, String, BasicState,Label<String>> t3 = new Transition<>(s0, new Label<String>("dollar"), s2);
+		Transition<String, String, BasicState,Label<String>> t4 = new Transition<>(s2, new Label<String>("tea"), s3);
 		return new Automaton<>(Set.of(t1,t2,t3,t4));
 	}
 
