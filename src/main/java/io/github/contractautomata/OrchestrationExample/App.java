@@ -1,7 +1,6 @@
 package io.github.contractautomata.OrchestrationExample;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 
@@ -14,43 +13,45 @@ import io.github.contractautomata.RunnableOrchestration.actions.DistributedOrche
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestration;
 import io.github.davidebasile.contractautomata.automaton.Automaton;
-import io.github.davidebasile.contractautomata.automaton.MSCA;
 import io.github.davidebasile.contractautomata.automaton.label.Label;
 import io.github.davidebasile.contractautomata.automaton.state.BasicState;
 import io.github.davidebasile.contractautomata.automaton.transition.Transition;
 import io.github.davidebasile.contractautomata.converters.DataConverter;
+import io.github.davidebasile.contractautomata.converters.MSCAConverter;
 import io.github.davidebasile.contractautomata.requirements.Agreement;
 
 public class App {
 	private final static String dir = System.getProperty("user.dir")+File.separator
 			+"resources"+File.separator;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 		// the designer of the application creates the  requirement
 		//substitute with = createNewRequirement(); to change the application behaviour
-		Automaton<String, String, BasicState,Transition<String, String, BasicState,Label<String>>> req = createNewRequirement();
+		Automaton<String, String, BasicState,Transition<String, String, BasicState,Label<String>>> req = createOldRequirement();
 		System.out.println("Requirement : \n" + req.toString());
 
 
 		//the services providers publish their contracts and services, in this example everything is local
-		MSCA ca = new DataConverter().importMSCA(dir+"Alice.data");
-		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(ca,8080, new Alice(), new DistributedOrchestratedAction());
+		MSCAConverter conv = new DataConverter();
+		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Alice.data"),
+				8080, new Alice(), new DistributedOrchestratedAction());
+		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Bob.data"),
+				8082, new Bob(),  new DistributedOrchestratedAction());
+		
 		new Thread(alice).start();
-
-		MSCA cb = new DataConverter().importMSCA(dir+"Bob.data");
-		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(cb,8082, new Bob(),  new DistributedOrchestratedAction());
 		new Thread(bob).start();
 
 
 		// when the hosts and ports running the threads alice and bob are discovered, 
-		// the runnable orchestration can be built and, if not empty, executed
+		// the runnable orchestration can be built
 		RunnableOrchestration ron = new MajoritarianChoiceRunnableOrchestration(req,new Agreement(),
 				Arrays.asList(alice.getContract(),bob.getContract()),
 				Arrays.asList(null,null), 
 				Arrays.asList(alice.getPort(),bob.getPort()),
 				new DistributedOrchestratorAction());
 		
+		//trying to execute the orchestration
 		if (ron.isEmptyOrchestration())
 			System.out.println("No orchestration found");
 		else
