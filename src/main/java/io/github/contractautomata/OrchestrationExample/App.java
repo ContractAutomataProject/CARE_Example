@@ -8,8 +8,8 @@ import io.github.contractautomata.OrchestrationExample.principals.Alice;
 import io.github.contractautomata.OrchestrationExample.principals.Bob;
 import io.github.contractautomata.RunnableOrchestration.RunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.RunnableOrchestration;
-import io.github.contractautomata.RunnableOrchestration.actions.DistributedOrchestratedAction;
-import io.github.contractautomata.RunnableOrchestration.actions.DistributedOrchestratorAction;
+import io.github.contractautomata.RunnableOrchestration.actions.CentralisedOrchestratedAction;
+import io.github.contractautomata.RunnableOrchestration.actions.CentralisedOrchestratorAction;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestratedContract;
 import io.github.contractautomata.RunnableOrchestration.impl.MajoritarianChoiceRunnableOrchestration;
 import io.github.davidebasile.contractautomata.automaton.Automaton;
@@ -35,9 +35,9 @@ public class App {
 		//the services providers publish their contracts and services, in this example everything is local
 		MSCAConverter conv = new DataConverter();
 		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Alice.data"),
-				8080, new Alice(), new DistributedOrchestratedAction());
+				8080, new Alice(), new CentralisedOrchestratedAction());
 		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Bob.data"),
-				8082, new Bob(),  new DistributedOrchestratedAction());
+				8082, new Bob(),  new CentralisedOrchestratedAction());
 		
 		new Thread(alice).start();
 		new Thread(bob).start();
@@ -45,17 +45,17 @@ public class App {
 
 		// when the hosts and ports running the threads alice and bob are discovered, 
 		// the runnable orchestration can be built
-		RunnableOrchestration ron = new MajoritarianChoiceRunnableOrchestration(req,new Agreement(),
+		RunnableOrchestration ror = new MajoritarianChoiceRunnableOrchestration(req,new Agreement(),
 				Arrays.asList(alice.getContract(),bob.getContract()),
 				Arrays.asList(null,null), 
 				Arrays.asList(alice.getPort(),bob.getPort()),
-				new DistributedOrchestratorAction());
+				new CentralisedOrchestratorAction());
 		
 		//trying to execute the orchestration
-		if (ron.isEmptyOrchestration())
+		if (ror.isEmptyOrchestration())
 			System.out.println("No orchestration found");
 		else
-			new Thread(ron).start();
+			new Thread(ror).start();
 
 		
 
