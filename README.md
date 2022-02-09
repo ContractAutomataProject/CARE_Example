@@ -9,4 +9,4 @@ https://github.com/ContractAutomataProject/CARE
 
 ### Video Tutorial
 
-A video tutorial for importing, executing this example and showing other features of CARE is available at https://youtu.be/MAOHVazGkEk
+A video tutorial for importing, executing this example and showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM
