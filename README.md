@@ -6,3 +6,7 @@ The main application is located in <tt>/src/main/java/io/github/contractautomata
 
 Check the repository of CARE for more info
 https://github.com/ContractAutomataProject/CARE
+
+### Video Tutorial
+
+A video tutorial for importing, executing this example and showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM
