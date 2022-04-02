@@ -1,6 +1,6 @@
 # Contract Automata Runtime Environment Usage Example
 
-An example using the Contract Automata Runtime Environment (<tt>CARE</tt>), submitted to FORTE 2022.
+An example using the Contract Automata Runtime Environment (<tt>CARE</tt>), published as working paper in https://arxiv.org/abs/2203.14122.
 
 The main application is located in <tt>/src/main/java/io/github/contractautomata/OrchestrationExample/App.java</tt> whilst the services are under the folder <tt>/src/main/java/io/github/contractautomata/OrchestrationExample/principals</tt> and the contract automata are under the folder <tt>/resources</tt>.
 
