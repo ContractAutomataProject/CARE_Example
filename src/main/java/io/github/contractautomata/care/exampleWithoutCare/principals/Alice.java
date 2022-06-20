@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.example.principals;
+package io.github.contractautomata.care.exampleWithoutCare.principals;
 
 /**
  * 
@@ -14,7 +14,7 @@ Transitions:
  * @author Davide Basile
  *
  */
-public class Alice  implements AliceInterface {
+public class Alice  implements AliceInterface{
 
 	//@request
 	public Integer coffee(String arg) {

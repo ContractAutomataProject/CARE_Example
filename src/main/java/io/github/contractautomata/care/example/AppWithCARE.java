@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-public class App {
+public class AppWithCARE {
 	private final static String dir =
 			Paths.get(System.getProperty("user.dir")).getParent()+File.separator
 					+"CARE_Example"+File.separator+"resources"+File.separator;
