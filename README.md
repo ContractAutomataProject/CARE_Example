@@ -33,7 +33,7 @@ https://github.com/ContractAutomataProject/CARE
 
 ### Video Tutorial
 
-An video tutorial for importing and executing the example with CARE, also showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM 
+An video tutorial for importing and executing the example with CARE, also showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM.
 This video tutorial was created with the version 
 https://github.com/contractautomataproject/CARE_Example/tree/ee938f97549d02f34a202585be9a3dacf3c3403e 
 of this repository.
