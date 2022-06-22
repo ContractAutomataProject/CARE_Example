@@ -26,19 +26,13 @@ public class AppWithoutCARE {
         Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>> req = createOldRequirement();
         System.out.println("Requirement : \n" + req);
 
-
-        AutDataConverter<CALabel> conv = new AutDataConverter<>(CALabel::new);
         AliceImplementation alice = new AliceImplementation();
         BobImplementation bob = new BobImplementation();
 
         new Thread(alice).start();
         new Thread(bob).start();
 
-
-        Orchestrator orc = new Orchestrator(req,new Agreement(),
-                Arrays.asList(alice.getContract(),bob.getContract()),
-                Arrays.asList(null,null),
-                Arrays.asList(alice.getPort(),bob.getPort()));
+        Orchestrator orc = new Orchestrator(req,new Agreement(),Arrays.asList(alice.getContract(),bob.getContract()),Arrays.asList(null,null),Arrays.asList(alice.getPort(),bob.getPort()));
 
         if (orc.isEmptyOrchestration())
             System.out.println("No orchestration found");
