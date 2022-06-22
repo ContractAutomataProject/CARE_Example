@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.exampleWithoutCare;
+package io.github.contractautomata.care.exampleWithoutCare.utilities;
 
 import io.github.contractautomata.catlib.automaton.label.CALabel;
 import io.github.contractautomata.catlib.automaton.label.Label;
@@ -6,12 +6,6 @@ import io.github.contractautomata.catlib.automaton.label.action.Action;
 
 import java.util.List;
 
-/**
- * a CALabel annotated with parameter type and return value type for matching types
- * 
- * @author Davide Basile
- *
- */
 public class TypedCALabelExample extends CALabel{
 	private final Class<?> param;
 	private final Class<?> value;
@@ -39,6 +33,4 @@ public class TypedCALabelExample extends CALabel{
 		else
 			throw new IllegalArgumentException();
 	}
-
-
 }

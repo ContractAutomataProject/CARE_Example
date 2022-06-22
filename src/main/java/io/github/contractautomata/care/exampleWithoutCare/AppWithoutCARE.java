@@ -23,13 +23,10 @@ public class AppWithoutCARE {
 
     public static void main(String[] args) throws Exception {
 
-        // the designer of the application creates the  requirement
-        //substitute with = createNewRequirement(); to change the application behaviour
         Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>> req = createOldRequirement();
         System.out.println("Requirement : \n" + req);
 
 
-        //the services providers publish their contracts and services, in this example everything is local
         AutDataConverter<CALabel> conv = new AutDataConverter<>(CALabel::new);
         AliceImplementation alice = new AliceImplementation();
         BobImplementation bob = new BobImplementation();
@@ -38,26 +35,18 @@ public class AppWithoutCARE {
         new Thread(bob).start();
 
 
-        // when the hosts and ports running the threads alice and bob are discovered,
-        // the runnable orchestration can be built
-        Orchestrator ror = new Orchestrator(req,new Agreement(),
+        Orchestrator orc = new Orchestrator(req,new Agreement(),
                 Arrays.asList(alice.getContract(),bob.getContract()),
                 Arrays.asList(null,null),
                 Arrays.asList(alice.getPort(),bob.getPort()));
 
-        //trying to execute the orchestration
-        if (ror.isEmptyOrchestration())
+        if (orc.isEmptyOrchestration())
             System.out.println("No orchestration found");
         else
-            new Thread(ror).start();
+            new Thread(orc).start();
 
     }
 
-    /**
-     * just an example of how it is possible to hard-code an automaton rather than loading it from a file.
-     *
-     * @return the requirement
-     */
     @SuppressWarnings("unused")
     private static  Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>>  createNewRequirement() {
         State<String> s0 = new State<>(List.of(new BasicState<>("0",true,false)));
@@ -71,11 +60,6 @@ public class AppWithoutCARE {
         return new Automaton<>(Set.of(t1,t2));
     }
 
-    /**
-     * just an example of how it is possible to hard-code an automaton rather than loading it from a file.
-     *
-     * @return the requirement
-     */
     @SuppressWarnings("unused")
     private static  Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>>  createOldRequirement() {
         State<String> s0 = new State<>(List.of(new BasicState<>("0",true,false)));

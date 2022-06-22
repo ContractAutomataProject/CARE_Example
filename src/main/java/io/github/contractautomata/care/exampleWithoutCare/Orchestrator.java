@@ -1,5 +1,7 @@
 package io.github.contractautomata.care.exampleWithoutCare;
 
+import io.github.contractautomata.care.exampleWithoutCare.utilities.AutoCloseableListExample;
+import io.github.contractautomata.care.exampleWithoutCare.utilities.TypedCALabelExample;
 import io.github.contractautomata.catlib.automaton.Automaton;
 import io.github.contractautomata.catlib.automaton.label.CALabel;
 import io.github.contractautomata.catlib.automaton.label.Label;
@@ -23,11 +25,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Abstract class implementing the runtime environment of a contract automata orchestration.
- *
- * @author Davide Basile
- */
 public class Orchestrator implements Runnable {
 
     public final static String stop_msg = "ORC_STOP";
@@ -75,22 +72,6 @@ public class Orchestrator implements Runnable {
                 .apply(comp);
 
     }
-
-//    public Orchestrator(Automaton<String, Action, State<String>,ModalTransition<String,Action,State<String>,Label<Action>>> req,
-//                                 Predicate<CALabel> pred,
-//                                 Automaton<String, Action, State<String>, ModalTransition<String,Action,State<String>,CALabel>> orchestration,
-//                                 List<String> hosts, List<Integer> port) throws ClassNotFoundException, IOException {
-//        super();
-//
-//        if (hosts.size()!=port.size())
-//            throw new IllegalArgumentException();
-//
-//        this.pred=pred;
-//        this.contract = orchestration;
-//        this.addresses = hosts;
-//        this.ports = port;
-//        checkCompatibility();
-//    }
 
     public Automaton<String, Action, State<String>, ModalTransition<String,Action,State<String>,CALabel>> getContract() {
         return contract;
@@ -266,22 +247,6 @@ public class Orchestrator implements Runnable {
         }
     }
 
-
-    /**
-     * Default implementation of a centralised action in an orchestration.
-     *
-     * The method of the requester is invoked twice:
-     * firstly passing no argument, it generates a value
-     * that is passed as parameter to the offerer method,
-     * which in turn produces a value that is finally passed
-     * as argument to the requester method, thus fulfilling
-     * the request.
-     *
-     * @param t			the transition to fire
-     * @param oout		outputs to the services
-     * @param oin		inputs from the services
-     *
-     */
     public void doAction(ModalTransition<String, Action, State<String>, ? extends CALabel> t, AutoCloseableListExample<ObjectOutputStream> oout, AutoCloseableListExample<ObjectInputStream> oin) throws IOException, ClassNotFoundException {
 
         if (t.getLabel().isMatch())

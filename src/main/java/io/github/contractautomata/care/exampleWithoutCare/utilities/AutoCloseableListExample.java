@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.exampleWithoutCare;
+package io.github.contractautomata.care.exampleWithoutCare.utilities;
 
 import java.util.ArrayList;
 
