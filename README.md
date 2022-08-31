@@ -6,7 +6,7 @@ Check the repository of CARE for more info
 https://github.com/ContractAutomataProject/CARE
 
 
-##Alice and Bob
+## Alice and Bob
 
 This is a simple example used for evaluating the Contract Automata Runtime Environment (<tt>CARE</tt>).
 
@@ -37,7 +37,7 @@ This comparison has been performed using SonarCloud, and is available for inspec
 
 
 
-### Video Tutorial
+#### Video Tutorial
 
 An  earlier video tutorial for importing and executing the Alice and Bob example with CARE, also showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM.
 
