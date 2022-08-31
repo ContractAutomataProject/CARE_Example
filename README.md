@@ -1,4 +1,4 @@
-# Contract Automata Runtime Environment Example and Evaluation
+# Contract Automata Runtime Environment Examples and Evaluation
 
 This repository contains examples of usage of the Contract Automata Runtime Environment (<tt>CARE</tt>).
 
