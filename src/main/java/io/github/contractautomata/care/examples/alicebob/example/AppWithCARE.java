@@ -1,7 +1,7 @@
-package io.github.contractautomata.care.example;
+package io.github.contractautomata.care.examples.alicebob.example;
 
-import io.github.contractautomata.care.example.principals.Alice;
-import io.github.contractautomata.care.example.principals.Bob;
+import io.github.contractautomata.care.examples.alicebob.example.principals.Alice;
+import io.github.contractautomata.care.examples.alicebob.example.principals.Bob;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestratedContract;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestration;
 import io.github.contractautomata.care.runnableOrchestration.actions.CentralisedOrchestratedAction;
@@ -27,7 +27,7 @@ import java.util.Set;
 public class AppWithCARE {
 	private final static String dir =
 			Paths.get(System.getProperty("user.dir")).getParent()+File.separator
-					+"CARE_Example"+File.separator+"resources"+File.separator;
+					+"CARE_Example"+File.separator+"resources"+File.separator + "alicebob" +File.separator;
 
 	public static void main(String[] args) throws Exception {
 
@@ -39,9 +39,9 @@ public class AppWithCARE {
 
 		//the services providers publish their contracts and services, in this example everything is local
 		AutDataConverter<CALabel> conv = new AutDataConverter<>(CALabel::new);
-		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Alice.data"),
+		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+ "Alice.data"),
 				8080, new Alice(), new CentralisedOrchestratedAction());
-		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Bob.data"),
+		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+ "Bob.data"),
 				8082, new Bob(),  new CentralisedOrchestratedAction());
 		
 		new Thread(alice).start();

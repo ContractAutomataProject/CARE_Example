@@ -1,7 +1,7 @@
-package io.github.contractautomata.care.exampleWithoutCare;
+package io.github.contractautomata.care.examples.alicebob.exampleWithoutCare;
 
-import io.github.contractautomata.care.exampleWithoutCare.utilities.AutoCloseableListExample;
-import io.github.contractautomata.care.exampleWithoutCare.utilities.TypedCALabelExample;
+import io.github.contractautomata.care.examples.alicebob.exampleWithoutCare.utilities.TypedCALabelExample;
+import io.github.contractautomata.care.examples.alicebob.exampleWithoutCare.utilities.AutoCloseableListExample;
 import io.github.contractautomata.catlib.automaton.Automaton;
 import io.github.contractautomata.catlib.automaton.label.CALabel;
 import io.github.contractautomata.catlib.automaton.label.Label;

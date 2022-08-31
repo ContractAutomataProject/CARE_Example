@@ -1,25 +1,18 @@
-package io.github.contractautomata.care.exampleWithoutCare;
+package io.github.contractautomata.care.examples.alicebob.exampleWithoutCare;
 
 import io.github.contractautomata.catlib.automaton.Automaton;
-import io.github.contractautomata.catlib.automaton.label.CALabel;
 import io.github.contractautomata.catlib.automaton.label.Label;
 import io.github.contractautomata.catlib.automaton.label.action.Action;
 import io.github.contractautomata.catlib.automaton.state.BasicState;
 import io.github.contractautomata.catlib.automaton.state.State;
 import io.github.contractautomata.catlib.automaton.transition.ModalTransition;
-import io.github.contractautomata.catlib.converters.AutDataConverter;
 import io.github.contractautomata.catlib.requirements.Agreement;
 
-import java.io.File;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
 public class AppWithoutCARE {
-    private final static String dir =
-            Paths.get(System.getProperty("user.dir")).getParent()+ File.separator
-                    +"CARE_Example"+File.separator+"resources"+File.separator;
 
     public static void main(String[] args) throws Exception {
 

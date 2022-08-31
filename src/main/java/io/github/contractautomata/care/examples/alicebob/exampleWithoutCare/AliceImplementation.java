@@ -1,7 +1,7 @@
-package io.github.contractautomata.care.exampleWithoutCare;
+package io.github.contractautomata.care.examples.alicebob.exampleWithoutCare;
 
-import io.github.contractautomata.care.exampleWithoutCare.principals.Alice;
-import io.github.contractautomata.care.exampleWithoutCare.utilities.TypedCALabelExample;
+import io.github.contractautomata.care.examples.alicebob.exampleWithoutCare.principals.Alice;
+import io.github.contractautomata.care.examples.alicebob.exampleWithoutCare.utilities.TypedCALabelExample;
 import io.github.contractautomata.catlib.automaton.Automaton;
 import io.github.contractautomata.catlib.automaton.label.CALabel;
 import io.github.contractautomata.catlib.automaton.label.action.Action;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 public class AliceImplementation implements Runnable {
     private final static String dir =
             Paths.get(System.getProperty("user.dir")).getParent()+ File.separator
-                    +"CARE_Example"+File.separator+"resources"+File.separator;
+                    +"CARE_Example"+File.separator+"resources"+File.separator+ "alicebob" +File.separator;
 
     private final Automaton<String, Action, State<String>, ModalTransition<String,Action,State<String>, TypedCALabelExample>> contract;
     private final int port;
@@ -48,7 +48,7 @@ public class AliceImplementation implements Runnable {
 
         //change the labels to typed labels
         this.contract = new Automaton<>
-                (conv.importMSCA(dir+"Alice.data").getTransition().stream()
+                (conv.importMSCA(dir+ "Alice.data").getTransition().stream()
                         .map(t->{ Method met = Arrays.stream(arrm)
                                 .filter(m->m.getName().equals(t.getLabel().getAction().getLabel()))
                                 .findFirst().orElseThrow(IllegalArgumentException::new);

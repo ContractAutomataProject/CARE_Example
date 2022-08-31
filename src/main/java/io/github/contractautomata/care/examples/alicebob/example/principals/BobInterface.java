@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.example.principals;
+package io.github.contractautomata.care.examples.alicebob.example.principals;
 
 public interface BobInterface {
 	String coffee(Integer sugar);

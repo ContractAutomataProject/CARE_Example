@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.exampleWithoutCare.principals;
+package io.github.contractautomata.care.examples.alicebob.exampleWithoutCare.principals;
 
 /**
  * 
