@@ -44,7 +44,6 @@ An  earlier video tutorial for importing and executing the Alice and Bob example
 
 ## Composition Service
 
-This example is located under the folder
-<tt>src/main/java/io/github/contractautomata/care/examples/compositionService/</tt> whilst the corresponding 
-contract automata are under the folder <tt>resources/alicebob</tt>.
+This example is located under the folder <tt>src/main/java/io/github/contractautomata/care/examples/compositionService/</tt> whilst the corresponding 
+contract automata are under the folder <tt>resources/compositionService</tt>.
  
