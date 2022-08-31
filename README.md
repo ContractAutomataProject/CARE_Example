@@ -33,7 +33,7 @@ Cognitive Complexity = 166.
 
 This comparison has been performed using SonarCloud, and is available for inspection at:
 
-<a href="https://sonarcloud.io/component_measures?metric=ncloc&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare&id=contractautomataproject_CARE_Example">https://sonarcloud.io/component_measures?metric=ncloc&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare&id=contractautomataproject_CARE_Example</a>.
+<a href="https://sonarcloud.io/component_measures?metric=complexity&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2Falicebob&id=contractautomataproject_CARE_Example">https://sonarcloud.io/component_measures?metric=complexity&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2Falicebob&id=contractautomataproject_CARE_Example</a>.
 
 
 
