@@ -77,7 +77,7 @@ The request <tt>quit</tt> is used as a signal for resetting the computed composi
 
 The classes <tt>ClientChoiceROC.java</tt> and <tt>ServiceChoiceROC</tt> are extending the class <tt>MajoritarianChoiceRunnableOrchestration.java</tt> of <tt>CARE</tt>. 
 In particular, these classes are overriding the method <tt>select</tt> used for selecting one of the possible choice options. 
-Indeed, the base implementation performs a probabilistic selection using a uniform distribution and needs to be overridden by each service to implement the specific choices to made. 
+Indeed, the base implementation performs a probabilistic selection using a uniform distribution and needs to be overridden by each service to implement the specific choices to be made. 
 In this example there are two choices: in state <tt>Init</tt> the orchestration can terminate or an action <tt>create</tt> can be executed. 
 In state <tt>Computing</tt> two possible actions can be performed. 
 The class <tt>ServiceChoiceROC</tt> overrides the method <tt>select</tt> to always reply with an empty answer. 
