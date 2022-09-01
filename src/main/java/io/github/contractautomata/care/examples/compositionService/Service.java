@@ -14,10 +14,28 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class implementing the composition service contract automaton
+ *
+ * Rank: 1
+ * Initial state: [Init]
+ * Final states: [[Init]]
+ * Transitions:
+ * ([Init],[!create],[Computing])
+ * ([Computing],[!update],[Computing])
+ * ([Computing],[!quit],[Init])
+ *
+ */
 public class Service {
     private MSCACompositionFunction<String> cf;
     private Automaton<String,Action,State<String>,ModalTransition<String,Action,State<String>,CALabel>> aut;
 
+    /**
+     * create offer
+     * @param pl  the payload received by the requester
+     * @return  the composed automaton
+     * @throws IOException
+     */
     public String create(Payload pl) throws IOException {
         AutDataConverter<CALabel> conv = new AutDataConverter<>(CALabel::new);
         List<Automaton<String,Action,State<String>,ModalTransition<String,Action,State<String>,CALabel>>> laut = new ArrayList<>();
@@ -38,6 +56,11 @@ public class Service {
             return "";
     }
 
+    /**
+     * update offer
+     * @param bound  the updated bound received from the client
+     * @return  the updated composition
+     */
     public String update(Integer bound) {
         try {
             aut = this.cf.apply(bound);
@@ -48,6 +71,11 @@ public class Service {
             return "";
     }
 
+    /**
+     * quit offer
+     * @param arg
+     * @return
+     */
     public String quit(String arg){
         return "";
     }

@@ -11,11 +11,22 @@ import io.github.contractautomata.catlib.automaton.transition.ModalTransition;
 
 import java.io.IOException;
 
+
 public class ClientChoiceROC extends MajoritarianChoiceRunnableOrchestratedContract {
     public ClientChoiceROC(Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, CALabel>> contract, int port, Client service, OrchestratedAction act) throws IOException {
         super(contract, port, service, act);
     }
 
+    /**
+     *
+     * Overrides the select method of MajoritarianChoiceRunnableOrchestratedContract.
+     * The choices are made interactively by a user via console during execution, depending
+     * on the current state of the contract.
+     *
+     * @param currentState
+     * @param toChoose  the list of possible choices
+     * @return
+     */
     @Override
     public String select(State<String> currentState, String[] toChoose) {
         Client client;

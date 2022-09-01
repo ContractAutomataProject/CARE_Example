@@ -11,6 +11,19 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Class implementing the contract of the client
+ *
+ * Rank: 1
+ * Initial state: [Init]
+ * Final states: [[Init]]
+ * Transitions:
+ * ([Init],[?create],[Computing])
+ * !L([Computing],[?update],[Computing])
+ * ([Computing],[?quit],[Init])
+ *
+ *
+ */
 public class Client {
     private final AutDataConverter<CALabel> conv;
     private Scanner scanner;
@@ -26,8 +39,14 @@ public class Client {
         this.bound = -1;
     }
 
+    /**
+     * create request
+     *
+     * @param result   the composed automaton printed as string
+     * @return  the payload to be sent to the composition service
+     */
     public Payload create(String result) {
-        if (result==null){
+        if (result==null){ //sending the request to the service
             List<String> automata = new ArrayList<>();
             while(true) {
                 if (!automata.isEmpty()) {
@@ -55,15 +74,21 @@ public class Client {
                 }
             }
             return new Payload(automata,closed,bound);
-        } else {
+        } else { //receiving the offer from the service
             System.out.println("The composition has been computed : "+result.toString());
             save(result);
             return null;
         }
     }
 
+    /**
+     * update request
+     *
+     * @param result    the updated composed automaton computed by the composition service
+     * @return  the updated bound
+     */
     public Integer update(String result){
-        if (result==null) {
+        if (result==null) { //sending the request to the service
             int increment;
             System.out.println("The current bound is " + this.bound +", type the increment of the bound:");
             try {
@@ -77,13 +102,18 @@ public class Client {
             }
             return bound;
         }
-        else {
+        else {  //receiving the offer from the service
             System.out.println("The composition has been computed : "+result.toString());
             save(result);
             return null;
         }
     }
 
+    /**
+     * update request, used for resetting the values
+     * @param arg
+     * @return
+     */
     public String quit(String arg){
         bound=-1;
         return "";

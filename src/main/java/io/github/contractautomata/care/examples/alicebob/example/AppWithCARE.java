@@ -2,6 +2,7 @@ package io.github.contractautomata.care.examples.alicebob.example;
 
 import io.github.contractautomata.care.examples.alicebob.example.principals.Alice;
 import io.github.contractautomata.care.examples.alicebob.example.principals.Bob;
+import io.github.contractautomata.care.examples.compositionService.AppComposition;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestratedContract;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestration;
 import io.github.contractautomata.care.runnableOrchestration.actions.CentralisedOrchestratedAction;
@@ -33,15 +34,21 @@ public class AppWithCARE {
 
 		// the designer of the application creates the  requirement
 		//substitute with = createNewRequirement(); to change the application behaviour
+//		if (args.length==0)
+//			System.out.println("Using the old requirement, pass any argument for using the new requirement.");
+//		else
+//			System.out.println("Using the new requirement");
 		Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>> req = createOldRequirement();
+				//(args.length==0)?createOldRequirement():createNewRequirement();
+
 		System.out.println("Requirement : \n" + req);
 
 
 		//the services providers publish their contracts and services, in this example everything is local
 		AutDataConverter<CALabel> conv = new AutDataConverter<>(CALabel::new);
-		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+ "Alice.data"),
+		RunnableOrchestratedContract alice = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Alice.data"),//AppComposition.loadAutomaton( "Alice.data"),
 				8080, new Alice(), new CentralisedOrchestratedAction());
-		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+ "Bob.data"),
+		RunnableOrchestratedContract bob = new MajoritarianChoiceRunnableOrchestratedContract(conv.importMSCA(dir+"Bob.data"),//AppComposition.loadAutomaton( "Bob.data"),
 				8082, new Bob(),  new CentralisedOrchestratedAction());
 		
 		new Thread(alice).start();

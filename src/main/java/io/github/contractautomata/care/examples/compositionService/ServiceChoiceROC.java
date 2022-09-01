@@ -15,6 +15,16 @@ public class ServiceChoiceROC extends MajoritarianChoiceRunnableOrchestratedCont
         super(contract, port, service, act);
     }
 
+    /**
+     *
+     *
+     * Overrides the select method of MajoritarianChoiceRunnableOrchestratedContract.
+     * The Composition Service does not perform any choice, i.e., these choices are external for the service.
+     *
+     * @param currentState
+     * @param toChoose  the list of possible choices
+     * @return
+     */
     @Override
     public String select(State<String> currentState, String[] toChoose) {
         return "";
