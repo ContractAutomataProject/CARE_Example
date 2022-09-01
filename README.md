@@ -105,15 +105,14 @@ In this case all the low-level communications between services and the orchestra
 These two implementations are compared to show the benefits brought by using <tt>CARE</tt>.
 
 Using <tt>CARE</tt>, the measures are:
-Lines of Code = ...,
-Cyclomatic Complexity = ...,
-Cognitive Complexity = ....
+Lines of Code = 279,
+Cyclomatic Complexity = 42,
+Cognitive Complexity = 55.
 
 Without using <tt>CARE</tt>, the measures are:
-Lines of Code = ...,
-Cyclomatic Complexity = ...,
-Cognitive Complexity = ....
+Lines of Code = 854,
+Cyclomatic Complexity = 155,
+Cognitive Complexity = 211.
 
 This comparison has been performed using SonarCloud, and is available for inspection at:
-
-<a href="https://sonarcloud.io/component_measures?metric=complexity&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2Falicebob&id=contractautomataproject_CARE_Example">https://sonarcloud.io/component_measures?metric=complexity&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2Falicebob&id=contractautomataproject_CARE_Example</a>.
+https://sonarcloud.io/component_measures?metric=ncloc&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2FcompositionService&id=contractautomataproject_CARE_Example
