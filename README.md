@@ -85,5 +85,4 @@ This means that all choices are external to the service, the service does not in
 The class <tt>ClientChoiceROC</tt> overrides the method <tt>select</tt> and implements both choices as internal. 
 The user of the client service will interact at console with the client service, and will indicate which choice has to be made. 
 
-Finally, the executable class <tt>AppComposition.java</tt> is used for testing this example. Both services and the orchestrator are executed locally.
-
+Finally, the executable class <tt>AppComposition.java</tt> is used for testing this example.
