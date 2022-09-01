@@ -40,6 +40,8 @@ This comparison has been performed using SonarCloud, and is available for inspec
 
 An  earlier video tutorial for importing and executing the Alice and Bob example with CARE, also showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM.
 
+An executable jar for this example is also available in this page, the next video tutorial below also shows an execution of this example.
+
 
 ## Composition Service
 
@@ -86,3 +88,8 @@ The class <tt>ClientChoiceROC</tt> overrides the method <tt>select</tt> and impl
 The user of the client service will interact at console with the client service, and will indicate which choice has to be made. 
 
 Finally, the executable class <tt>AppComposition.java</tt> is used for testing this example.
+
+### Video Tutorial
+
+A video tutorial is available at this link https://youtu.be/--FbqHrINek  showing how to run the CompositionService example and the Alice and Bob example. 
+The executable jars of both examples have been released in this page.
