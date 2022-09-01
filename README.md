@@ -17,7 +17,7 @@ The implementation  <tt>src/main/java/io/github/contractautomata/care/examples/a
 Here the main application is located in the file <tt>AppWithCARE.java</tt> whilst the services are under the folder <tt>principals</tt>.
 
 
-####Evaluation 
+#### Evaluation 
 
 The second implementation of this example <tt>src/main/java/io/github/contractautomata/care/examples/alicebob/exampleWithoutCare</tt> does not use <tt>CARE</tt>. 
 In this case all the low-level communications between services and the orchestrator have been implemented from scratch.
@@ -42,6 +42,8 @@ This comparison has been performed using SonarCloud, and is available for inspec
 #### Video Tutorial
 
 An  earlier video tutorial for importing and executing the Alice and Bob example with CARE, also showing other features of CARE is available at https://youtu.be/Zq0KVUs9FqM.
+
+An executable jar for this example is also available in this page, the next video tutorial below also shows an execution of this example.
 
 
 ## Composition Service
@@ -90,7 +92,12 @@ The user of the client service will interact at console with the client service,
 
 Finally, the executable class <tt>AppComposition.java</tt> is used for testing this example.
 
-####Evaluation
+#### Video Tutorial
+
+A video tutorial is available at this link https://youtu.be/--FbqHrINek  showing how to run the CompositionService example and the Alice and Bob example. 
+The executable jars of both examples have been released in this page.
+
+#### Evaluation
 
 The second implementation of this example is at  <tt>src/main/java/io/github/contractautomata/care/examples/compositionService/withoutCARE</tt> and it does not use <tt>CARE</tt>.
 In this case all the low-level communications between services and the orchestrator have been implemented from scratch.
