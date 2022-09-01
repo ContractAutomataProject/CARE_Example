@@ -10,14 +10,14 @@ https://github.com/ContractAutomataProject/CARE
 
 This is a simple example used for evaluating the Contract Automata Runtime Environment (<tt>CARE</tt>).
 
+#### Evaluation 
+
 Two implementations of the example are available for this example, and are located in <tt>src/main/java/io/github/contractautomata/care/examples/alicebob</tt>. 
 The  contract automata are under the folder <tt>/resources/alicebob</tt>.
 
 The implementation  <tt>src/main/java/io/github/contractautomata/care/examples/alicebob/example</tt> uses <tt>CARE</tt>. 
 Here the main application is located in the file <tt>AppWithCARE.java</tt> whilst the services are under the folder <tt>principals</tt>.
 
-
-#### Evaluation 
 
 The second implementation of this example <tt>src/main/java/io/github/contractautomata/care/examples/alicebob/exampleWithoutCare</tt> does not use <tt>CARE</tt>. 
 In this case all the low-level communications between services and the orchestrator have been implemented from scratch.
