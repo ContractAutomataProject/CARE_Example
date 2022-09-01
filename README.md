@@ -16,7 +16,10 @@ The  contract automata are under the folder <tt>/resources/alicebob</tt>.
 The implementation  <tt>src/main/java/io/github/contractautomata/care/examples/alicebob/example</tt> uses <tt>CARE</tt>. 
 Here the main application is located in the file <tt>AppWithCARE.java</tt> whilst the services are under the folder <tt>principals</tt>.
 
-The second implementation<tt>src/main/java/io/github/contractautomata/care/examples/alicebob/exampleWithoutCare</tt> does not use <tt>CARE</tt>. 
+
+####Evaluation 
+
+The second implementation of this example <tt>src/main/java/io/github/contractautomata/care/examples/alicebob/exampleWithoutCare</tt> does not use <tt>CARE</tt>. 
 In this case all the low-level communications between services and the orchestrator have been implemented from scratch.
 
 These two implementations are compared to show the benefits brought by using <tt>CARE</tt>. 
@@ -53,7 +56,7 @@ The newly generated states are only those that were exceeding the previous bound
 of the composition being computed that are violating an invariant property on their labels. For example, in a composition closed under agreement all transitions that are labelled with requests are not generated
 (only offers and matches are present).
 
-The sources of this example are located under the folder <tt>src/main/java/io/github/contractautomata/care/examples/compositionService/</tt> whilst the corresponding 
+The sources of this example are located under the folder <tt>src/main/java/io/github/contractautomata/care/examples/compositionService/withCARE</tt> whilst the corresponding 
 contract automata are under the folder <tt>resources/compositionService</tt>.
 
 The example is composed of a client contract and a service contract. The client contract is displayed below, whilst the service contract is dual (all requests are turned to offers).
@@ -86,3 +89,24 @@ The class <tt>ClientChoiceROC</tt> overrides the method <tt>select</tt> and impl
 The user of the client service will interact at console with the client service, and will indicate which choice has to be made. 
 
 Finally, the executable class <tt>AppComposition.java</tt> is used for testing this example.
+
+####Evaluation
+
+The second implementation of this example is at  <tt>src/main/java/io/github/contractautomata/care/examples/compositionService/withoutCARE</tt> and it does not use <tt>CARE</tt>.
+In this case all the low-level communications between services and the orchestrator have been implemented from scratch.
+
+These two implementations are compared to show the benefits brought by using <tt>CARE</tt>.
+
+Using <tt>CARE</tt>, the measures are:
+Lines of Code = ...,
+Cyclomatic Complexity = ...,
+Cognitive Complexity = ....
+
+Without using <tt>CARE</tt>, the measures are:
+Lines of Code = ...,
+Cyclomatic Complexity = ...,
+Cognitive Complexity = ....
+
+This comparison has been performed using SonarCloud, and is available for inspection at:
+
+<a href="https://sonarcloud.io/component_measures?metric=complexity&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2Falicebob&id=contractautomataproject_CARE_Example">https://sonarcloud.io/component_measures?metric=complexity&selected=contractautomataproject_CARE_Example%3Asrc%2Fmain%2Fjava%2Fio%2Fgithub%2Fcontractautomata%2Fcare%2Fexamples%2Falicebob&id=contractautomataproject_CARE_Example</a>.

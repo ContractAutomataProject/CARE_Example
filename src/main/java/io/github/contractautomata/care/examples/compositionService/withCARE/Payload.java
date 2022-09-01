@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.examples.compositionService;
+package io.github.contractautomata.care.examples.compositionService.withCARE;
 
 import java.io.Serializable;
 import java.util.List;

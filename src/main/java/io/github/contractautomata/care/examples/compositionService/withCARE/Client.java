@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.examples.compositionService;
+package io.github.contractautomata.care.examples.compositionService.withCARE;
 
 import io.github.contractautomata.catlib.automaton.label.CALabel;
 import io.github.contractautomata.catlib.converters.AutDataConverter;

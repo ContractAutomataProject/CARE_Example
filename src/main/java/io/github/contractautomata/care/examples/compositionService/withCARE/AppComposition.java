@@ -1,4 +1,4 @@
-package io.github.contractautomata.care.examples.compositionService;
+package io.github.contractautomata.care.examples.compositionService.withCARE;
 
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestratedContract;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestration;

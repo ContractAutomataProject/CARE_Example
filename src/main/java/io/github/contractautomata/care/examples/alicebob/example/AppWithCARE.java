@@ -2,7 +2,6 @@ package io.github.contractautomata.care.examples.alicebob.example;
 
 import io.github.contractautomata.care.examples.alicebob.example.principals.Alice;
 import io.github.contractautomata.care.examples.alicebob.example.principals.Bob;
-import io.github.contractautomata.care.examples.compositionService.AppComposition;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestratedContract;
 import io.github.contractautomata.care.runnableOrchestration.RunnableOrchestration;
 import io.github.contractautomata.care.runnableOrchestration.actions.CentralisedOrchestratedAction;
