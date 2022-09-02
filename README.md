@@ -80,7 +80,7 @@ The service receives the offer and replies with the composed automaton. The impl
 When performing the <tt>update</tt> request, the client sends an incremented bound to the service, which proceeds to compute the composition with the extended bound and sends it to the client.
 The request <tt>quit</tt> is used as a signal for resetting the computed composition and the bound.
 
-The classes <tt>ClientChoiceROC.java</tt> and <tt>ServiceChoiceROC</tt> are extending the class <tt>MajoritarianChoiceRunnableOrchestration.java</tt> of <tt>CARE</tt>. 
+The classes <tt>ClientChoiceROC.java</tt> and <tt>ServiceChoiceROC</tt> are extending the class <tt>MajoritarianChoiceRunnableOrchestratedContract.java</tt> of <tt>CARE</tt>. 
 In particular, these classes are overriding the method <tt>select</tt> used for selecting one of the possible choice options. 
 Indeed, the base implementation performs a probabilistic selection using a uniform distribution and needs to be overridden by each service to implement the specific choices to be made. 
 In this example there are two choices: in state <tt>Init</tt> the orchestration can terminate or an action <tt>create</tt> can be executed. 
