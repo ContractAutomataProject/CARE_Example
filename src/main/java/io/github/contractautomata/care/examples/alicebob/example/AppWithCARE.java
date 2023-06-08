@@ -27,7 +27,7 @@ import java.util.Set;
 public class AppWithCARE {
 	private final static String dir =
 			Paths.get(System.getProperty("user.dir")).getParent()+File.separator
-					+"CARE_Example"+File.separator+"resources"+File.separator + "alicebob" +File.separator;
+					+"CARE_Examples"+File.separator+"resources"+File.separator + "alicebob" +File.separator;
 
 	public static void main(String[] args) throws Exception {
 
@@ -37,7 +37,8 @@ public class AppWithCARE {
 //			System.out.println("Using the old requirement, pass any argument for using the new requirement.");
 //		else
 //			System.out.println("Using the new requirement");
-		Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>> req = createOldRequirement();
+		Automaton<String, Action, State<String>, ModalTransition<String, Action, State<String>, Label<Action>>>
+				req = createOldRequirement();
 				//(args.length==0)?createOldRequirement():createNewRequirement();
 
 		System.out.println("Requirement : \n" + req);
